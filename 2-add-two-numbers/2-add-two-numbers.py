@@ -15,11 +15,8 @@ class Solution:
             
             n1 = val1 + val2 + carry
             
-            if n1 // 10 == 1:
-                carry = 1
-            else:
-                carry = 0
-                
+            carry = n1 // 10
+        
             dummy.next = ListNode(n1%10)
             
             if l1: l1 = l1.next
