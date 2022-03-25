@@ -1,22 +1,15 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        def nthRow(prevRow):
-            prev = prevRow[:]
-            prev.insert(0,0)
-            prev.append(0)
-            
-            res = list()
-            for i in range(len(prev)-1):
-                res.append(prev[i]+prev[i+1])
-                
-            return res
-        
         pascal = list()
         
         for i in range(numRows):
             if i == 0:
                 pascal.append([1])
             else:
-                pascal.append(nthRow(pascal[-1]))
+                tmp = [0] + pascal[-1] + [0]
+                nth = list()
+                for j in range(len(tmp)-1):
+                    nth.append(tmp[j]+tmp[j+1])
+                pascal.append(nth)
         
         return pascal
